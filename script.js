@@ -4,7 +4,7 @@ function updateInput(val) {
 }
 // character amount and type boolians
 var digt = 124;
-var low = true;
+var low = false;
 var upp = false;
 var num = false;
 var spe = false;
@@ -33,8 +33,8 @@ for (var digt; digt > 0; digt--) {
         else if (low == false && upp == false && num == false && spe == false) {
             confirmSelect = 0;
             digt = 0;
-            selitem = ""
-            password = "Please check at least one box."
+            selitem = "";
+            password = "Please check at least one box.";
         }
         else {
             confirmSelect++
