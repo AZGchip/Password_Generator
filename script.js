@@ -3,11 +3,11 @@ function updateInput(val) {
     document.getElementById("textInput").value = val;
 }
 // character amount and type boolians
-var digt = 124;
-var low = false;
-var upp = false;
-var num = false;
-var spe = false;
+var digt = 20;
+var low = true;
+var upp = true;
+var num = true;
+var spe = true;
 // character arrays
 var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "x", "t", "u", "v", "w", "x", "y", "z"];
 var numbr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
