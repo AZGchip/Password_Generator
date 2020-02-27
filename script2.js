@@ -7,49 +7,101 @@ var masterString = "";
 var password = "";
 var goodPass = 0
 //user input values
-var dig = 8
-var low = 1
-var upp = 1
-var num = 1
+var dig = 64
+var low = 0
+var upp = 0
+var num = 0
 var spe = 0
-var total = low + upp + num + spe
-function passwordGen(){
-// string combiner
-if (low === 1) {
-    masterString += lower
+
+
+
+//User checkbox input functions
+function checkLow(checkbox) {
+    if (checkbox.checked) {
+        low = 1;
+    }
+    else { low = 0 }
 }
-if (upp === 1) {
-    masterString += upper
+function checkUpp(checkbox) {
+    if (checkbox.checked) {
+        upp = 1;
+    }
+    else { upp = 0 }
 }
-if (num === 1) {
-    masterString += number
+function checkNum(checkbox) {
+    if (checkbox.checked) {
+        num = 1;
+    }
+    else { num = 0 }
 }
-if (spe === 1) {
-    masterString += special
+function checkSpe(checkbox) {
+    if (checkbox.checked) {
+        spe = 1;
+    }
+    else { spe = 0 }
 }
-//while loop selects one random character from MASTERSTRING and adds it to PASSWORD. Loop stops when PASSWORD string length = DIG
-while (password.length < dig) {
-    password += masterString[Math.floor(Math.random() * masterString.length)]
+// updates slider and DIG
+function updateInput(val) {
+    document.getElementById("textInput").value = val;
+    dig = parseInt(val)
 }
-//check if contains
-if ( inPassword(lower) + inPassword(upper) + inPassword(number) + inPassword(special) === total ) {
-    console.log(password)
+// to clipboard
+function clipB(){
+ var copyclip = document.getElementById("passwordholder");
+ copyclip.select();
+ copyclip.setSelectionRange(0, 130);
+ document.execCommand("copy");
 }
 
+function passwordGen() {
+    var total = low + upp + num + spe
+    goodPass = 0;
+    while (goodPass == 0) {
+        password = "";
+        masterString = "";
+        // string combiner
+        if (low === 1) {
+            masterString += lower;
+        }
+        if (upp === 1) {
+            masterString += upper;
+        }
+        if (num === 1) {
+            masterString += number;
+        }
+        if (spe === 1) {
+            masterString += special;
+        }
+        if (low + upp + num + spe === 0) {
+            password = "Please select at least one box"
+            return "no password"
+        }
+        //while loop selects one random character from MASTERSTRING and adds it to PASSWORD. Loop stops when PASSWORD string length = DIG
+        while (password.length < dig) {
+            password += masterString[Math.floor(Math.random() * masterString.length)]
+        }
+        //check if contains at least one of each selected characters.
+        if (inPassword(lower) + inPassword(upper) + inPassword(number) + inPassword(special) === total) {
+            document.getElementById("passwordholder").value = password;
+            goodPass++;
+        }
+        else {
+            console.log("password does not include all requested. looping");
+        }
+    }
+}
 
 function inPassword(string) {
     for (var i = 0; i < string.length; i++) {
         var contain = password.includes(string[i])
         if (contain) {
-            i = string.length;
-            return 1
+            return 1;
         }
-
-
     }
+    return 0;
 }
 
-}
+
 
 
 
