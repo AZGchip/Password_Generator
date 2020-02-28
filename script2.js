@@ -56,7 +56,7 @@ function clipB(){
 function passwordGen() {
     var total = low + upp + num + spe
     goodPass = 0;
-    while (goodPass == 0) {
+    while (goodPass === 0) {
         password = "";
         masterString = "";
         // string combiner
