@@ -40,7 +40,7 @@ function checkSpe(checkbox) {
     }
     else { spe = 0 }
 }
-// updates slider and DIG
+// updates slider, input box, and DIG
 function updateInput(val) {
     document.getElementById("textInput").value = val;
     dig = parseInt(val)

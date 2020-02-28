@@ -11,10 +11,12 @@ ul{
 }
 body{
     background-color: gray;
+    height: 100vh;
 }
 .container{
     background-color: #cccccc;
     padding-bottom: auto;
+    height: 100vh;
 }
 #passbox{
     display: none;
