@@ -7,7 +7,7 @@ var masterString = "";
 var password = "";
 var goodPass = 0
 //user input values
-var dig = 64
+var dig = 12
 var low = 0
 var upp = 0
 var num = 0
@@ -46,24 +46,25 @@ function updateInput(val) {
     dig = parseInt(val)
 }
 
-function updateSlider(valu){
+function updateSlider(valu) {
     document.getElementById("slider").value = valu;
 }
 var show = document.getElementById("passbox")
-document.getElementById("passbut").addEventListener("click",ShowGenerator)
-function ShowGenerator(){
-    show.setAttribute("style","display:block;");
-    
+document.getElementById("passbut").addEventListener("click", ShowGenerator)
+function ShowGenerator() {
+    show.setAttribute("style", "display:block;");
+
 }
 // to clipboard
-function clipB(){
- var copyclip = document.getElementById("passwordholder");
- copyclip.select();
- copyclip.setSelectionRange(0, 130);
- document.execCommand("copy");
+function clipB() {
+    var copyclip = document.getElementById("passwordholder");
+    copyclip.select();
+    copyclip.setSelectionRange(0, 130);
+    document.execCommand("copy");
 }
 
 function passwordGen() {
+
     var total = low + upp + num + spe
     goodPass = 0;
     while (goodPass === 0) {
@@ -83,20 +84,22 @@ function passwordGen() {
             masterString += special;
         }
         if (total === 0) {
+            document.getElementById("passwordholder").setAttribute("style", "color:red;")
             document.getElementById("passwordholder").value = "Please select at least one box";
             return "no password";
         }
+        else { document.getElementById("passwordholder").setAttribute("style", "color:black;") }
         //while loop selects one random character from MASTERSTRING and adds it to PASSWORD. Loop stops when PASSWORD string length = DIG
         while (password.length < dig) {
             password += masterString[Math.floor(Math.random() * masterString.length)]
         }
-        //check if contains at least one of each selected characters.
+        //checks if PASSWORD contains at least one character of each selected string. Returns 1 if match found.
         if (inPassword(lower) + inPassword(upper) + inPassword(number) + inPassword(special) === total) {
             document.getElementById("passwordholder").value = password;
             goodPass++;
         }
         else {
-            console.log("password does not include all requested. looping");
+            console.log("password does not include all requested. looping...");
         }
     }
 }
