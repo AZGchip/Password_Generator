@@ -1,6 +1,21 @@
 #passwordholder{
-    width:75%;
+    width:90%;
+    margin-bottom: 20px;
+    
 }
 ul{
  list-style: none;
+}
+#textInput{
+    width: 34px;
+}
+body{
+    background-color: gray;
+}
+.container{
+    background-color: #cccccc;
+    padding-bottom: auto;
+}
+#passbox{
+    display: none;
 }

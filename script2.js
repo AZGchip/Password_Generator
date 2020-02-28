@@ -12,7 +12,7 @@ var low = 0
 var upp = 0
 var num = 0
 var spe = 0
-
+var inputBox = document.getElementById("textInput")
 
 
 //User checkbox input functions
@@ -45,6 +45,16 @@ function updateInput(val) {
     document.getElementById("textInput").value = val;
     dig = parseInt(val)
 }
+
+function updateSlider(valu){
+    document.getElementById("slider").value = valu;
+}
+var show = document.getElementById("passbox")
+document.getElementById("passbut").addEventListener("click",ShowGenerator)
+function ShowGenerator(){
+    show.setAttribute("style","display:block;");
+    
+}
 // to clipboard
 function clipB(){
  var copyclip = document.getElementById("passwordholder");
@@ -72,9 +82,9 @@ function passwordGen() {
         if (spe === 1) {
             masterString += special;
         }
-        if (low + upp + num + spe === 0) {
-            password = "Please select at least one box"
-            return "no password"
+        if (total === 0) {
+            document.getElementById("passwordholder").value = "Please select at least one box";
+            return "no password";
         }
         //while loop selects one random character from MASTERSTRING and adds it to PASSWORD. Loop stops when PASSWORD string length = DIG
         while (password.length < dig) {
