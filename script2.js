@@ -1,6 +1,7 @@
 // strings and password
-var lower = "abcdefghijklmnopqrstuvwxyz";
+ var lower = "abcdefghijklmnopqrstuvwxyz";
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// NUMBER and SPECIAL are repeated to equalize probability of selection from MASTERSTRING.
 var number = "12345678901234567890123456";
 var special = "!@#$%^&*()_+=<>?/!@#$%^&*(";
 var masterString = "";
@@ -62,7 +63,7 @@ function clipB() {
     copyclip.setSelectionRange(0, 130);
     document.execCommand("copy");
 }
-
+//password generator
 function passwordGen() {
 
     var total = low + upp + num + spe
@@ -93,7 +94,7 @@ function passwordGen() {
         while (password.length < dig) {
             password += masterString[Math.floor(Math.random() * masterString.length)]
         }
-        //checks if PASSWORD contains at least one character of each selected string. Returns 1 if match found.
+        //if INPASSWORD values equal TOTAL, password contains one of each selected string
         if (inPassword(lower) + inPassword(upper) + inPassword(number) + inPassword(special) === total) {
             document.getElementById("passwordholder").value = password;
             goodPass++;
@@ -103,7 +104,7 @@ function passwordGen() {
         }
     }
 }
-
+//checks if PASSWORD contains at least one character of each selected string. Returns 1 if match found.
 function inPassword(string) {
     for (var i = 0; i < string.length; i++) {
         var contain = password.includes(string[i])
