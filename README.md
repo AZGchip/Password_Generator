@@ -1,3 +1,5 @@
+deployed site: https://azgchip.github.io/String_Password_Generator
+
 This repo creates a password one character at a time from a loop. the generated characters are added to the string "password" until the specified password length is met.
 script.js is unused in the final draft in favor of script2.js, a simplified and less inefficient way of generating the password string.
 script2.js is not without its flaws though. script2.js adds strings together based on input and draws a character randomly from the "master string".
